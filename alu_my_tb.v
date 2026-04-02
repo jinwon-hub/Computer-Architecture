@@ -46,15 +46,15 @@ module alu_my_tb;
         else $display("Divide: %d / %d = %d [PASS]", src_a, src_b, result);
 
         // Test AND
-        src_a = 32'hFF00; src_b = 32'h0FF0; alu_ctrl = 3'b100;
+        src_a = 32'h0FF0; src_b = 32'hFFF0; alu_ctrl = 3'b100;
         #10;
-        if (result !== 32'h0F00) $error("AND Failed");
+        if (result !== 32'h0FF0) $error("AND Failed");
         else $display("AND: 0x%h & 0x%h = 0x%h [PASS]", src_a, src_b, result);
         
         // Test OR
-        src_a = 32'hFF00; src_b = 32'h00FF; alu_ctrl = 3'b110;
+        src_a = 32'hF000; src_b = 32'h0F0F; alu_ctrl = 3'b110;
         #10;
-        if (result !== 32'hFFFF) $error("OR Failed");
+        if (result !== 32'hFF0F) $error("OR Failed");
         else $display("OR: 0x%h | 0x%h = 0x%h [PASS]", src_a, src_b, result);
                
         $display("=== All Tests Passed ===");
